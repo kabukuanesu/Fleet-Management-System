@@ -50,8 +50,8 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "author", accessor: "author", width: "45%", align: "left" },
-      { Header: "function", accessor: "function", align: "left" },
+      { Header: "name", accessor: "author", width: "45%", align: "left" },
+      { Header: "vehicle assigned", accessor: "function", align: "left" },
       { Header: "status", accessor: "status", align: "center" },
       { Header: "employed", accessor: "employed", align: "center" },
       { Header: "action", accessor: "action", align: "center" },
@@ -59,11 +59,11 @@ export default function data() {
 
     rows: [
       {
-        author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-        function: <Job title="Manager" description="Organization" />,
+        author: <Author image={team2} name="John Michael" email="john@buse.students.ac.zw" />,
+        function: <Job title="Truck" description="MB650S" />,
         status: (
           <MDBox ml={-1}>
-            <MDBadge badgeContent="online" color="success" variant="gradient" size="sm" />
+            <MDBadge badgeContent="on duty" color="success" variant="gradient" size="sm" />
           </MDBox>
         ),
         employed: (
@@ -78,11 +78,11 @@ export default function data() {
         ),
       },
       {
-        author: <Author image={team3} name="Alexa Liras" email="alexa@creative-tim.com" />,
-        function: <Job title="Programator" description="Developer" />,
+        author: <Author image={team3} name="Alexa Liras" email="alexa@buse.students.ac.zw" />,
+        function: <Job title="Truck" description="MB650S" />,
         status: (
           <MDBox ml={-1}>
-            <MDBadge badgeContent="offline" color="dark" variant="gradient" size="sm" />
+            <MDBadge badgeContent="off duty" color="dark" variant="gradient" size="sm" />
           </MDBox>
         ),
         employed: (
@@ -97,11 +97,11 @@ export default function data() {
         ),
       },
       {
-        author: <Author image={team4} name="Laurent Perrier" email="laurent@creative-tim.com" />,
-        function: <Job title="Executive" description="Projects" />,
+        author: <Author image={team4} name="Laurent Perrier" email="laurent@buse.students.ac.zw" />,
+        function: <Job title="Van" description="MV7 Mini" />,
         status: (
           <MDBox ml={-1}>
-            <MDBadge badgeContent="online" color="success" variant="gradient" size="sm" />
+            <MDBadge badgeContent="on duty" color="success" variant="gradient" size="sm" />
           </MDBox>
         ),
         employed: (
@@ -116,11 +116,11 @@ export default function data() {
         ),
       },
       {
-        author: <Author image={team3} name="Michael Levi" email="michael@creative-tim.com" />,
-        function: <Job title="Programator" description="Developer" />,
+        author: <Author image={team3} name="Michael Levi" email="michael@buse.students.ac.zw" />,
+        function: <Job title="Truck" description="MB780M" />,
         status: (
           <MDBox ml={-1}>
-            <MDBadge badgeContent="online" color="success" variant="gradient" size="sm" />
+            <MDBadge badgeContent="on duty" color="success" variant="gradient" size="sm" />
           </MDBox>
         ),
         employed: (
@@ -135,11 +135,11 @@ export default function data() {
         ),
       },
       {
-        author: <Author image={team3} name="Richard Gran" email="richard@creative-tim.com" />,
-        function: <Job title="Manager" description="Executive" />,
+        author: <Author image={team3} name="Richard Gran" email="richard@buse.students.ac.zw" />,
+        function: <Job title="Car" description="IS 50D" />,
         status: (
           <MDBox ml={-1}>
-            <MDBadge badgeContent="offline" color="dark" variant="gradient" size="sm" />
+            <MDBadge badgeContent="off duty" color="dark" variant="gradient" size="sm" />
           </MDBox>
         ),
         employed: (
@@ -154,11 +154,11 @@ export default function data() {
         ),
       },
       {
-        author: <Author image={team4} name="Miriam Eric" email="miriam@creative-tim.com" />,
-        function: <Job title="Programator" description="Developer" />,
+        author: <Author image={team4} name="Miriam Eric" email="miriam@buse.students.ac.zw" />,
+        function: <Job title="Van" description="MV650 Mini" />,
         status: (
           <MDBox ml={-1}>
-            <MDBadge badgeContent="offline" color="dark" variant="gradient" size="sm" />
+            <MDBadge badgeContent="off duty" color="dark" variant="gradient" size="sm" />
           </MDBox>
         ),
         employed: (

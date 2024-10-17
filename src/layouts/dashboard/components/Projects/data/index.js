@@ -71,15 +71,15 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "companies", accessor: "companies", width: "45%", align: "left" },
-      { Header: "members", accessor: "members", width: "10%", align: "left" },
-      { Header: "budget", accessor: "budget", align: "center" },
-      { Header: "completion", accessor: "completion", align: "center" },
+      { Header: "report objects", accessor: "companies", width: "45%", align: "left" },
+      { Header: "people involved", accessor: "members", width: "10%", align: "left" },
+      { Header: "total", accessor: "budget", align: "center" },
+      { Header: "status", accessor: "completion", align: "center" },
     ],
 
     rows: [
       {
-        companies: <Company image={logoXD} name="Material UI XD Version" />,
+        companies: <Company image={logoXD} name="Active Drivers" />,
         members: (
           <MDBox display="flex" py={1}>
             {avatars([
@@ -92,7 +92,7 @@ export default function data() {
         ),
         budget: (
           <MDTypography variant="caption" color="text" fontWeight="medium">
-            $14,000
+            14,000
           </MDTypography>
         ),
         completion: (
@@ -102,7 +102,7 @@ export default function data() {
         ),
       },
       {
-        companies: <Company image={logoAtlassian} name="Add Progress Track" />,
+        companies: <Company image={logoAtlassian} name="Incidents" />,
         members: (
           <MDBox display="flex" py={1}>
             {avatars([
@@ -113,7 +113,7 @@ export default function data() {
         ),
         budget: (
           <MDTypography variant="caption" color="text" fontWeight="medium">
-            $3,000
+            300
           </MDTypography>
         ),
         completion: (
@@ -123,7 +123,7 @@ export default function data() {
         ),
       },
       {
-        companies: <Company image={logoSlack} name="Fix Platform Errors" />,
+        companies: <Company image={logoSlack} name="Delayed Trips" />,
         members: (
           <MDBox display="flex" py={1}>
             {avatars([
@@ -134,7 +134,7 @@ export default function data() {
         ),
         budget: (
           <MDTypography variant="caption" color="text" fontWeight="medium">
-            Not set
+            20
           </MDTypography>
         ),
         completion: (
@@ -144,7 +144,7 @@ export default function data() {
         ),
       },
       {
-        companies: <Company image={logoSpotify} name="Launch our Mobile App" />,
+        companies: <Company image={logoSpotify} name="Vehicles In Maintenance" />,
         members: (
           <MDBox display="flex" py={1}>
             {avatars([
@@ -157,7 +157,7 @@ export default function data() {
         ),
         budget: (
           <MDTypography variant="caption" color="text" fontWeight="medium">
-            $20,500
+            500
           </MDTypography>
         ),
         completion: (
@@ -167,7 +167,7 @@ export default function data() {
         ),
       },
       {
-        companies: <Company image={logoJira} name="Add the New Pricing Page" />,
+        companies: <Company image={logoJira} name="New Vehicles" />,
         members: (
           <MDBox display="flex" py={1}>
             {avatars([[team4, "Jessica Doe"]])}
@@ -175,7 +175,7 @@ export default function data() {
         ),
         budget: (
           <MDTypography variant="caption" color="text" fontWeight="medium">
-            $500
+            500
           </MDTypography>
         ),
         completion: (
@@ -185,7 +185,7 @@ export default function data() {
         ),
       },
       {
-        companies: <Company image={logoInvesion} name="Redesign New Online Shop" />,
+        companies: <Company image={logoInvesion} name="Disposed Vehicles" />,
         members: (
           <MDBox display="flex" py={1}>
             {avatars([
@@ -196,7 +196,7 @@ export default function data() {
         ),
         budget: (
           <MDTypography variant="caption" color="text" fontWeight="medium">
-            $2,000
+            200
           </MDTypography>
         ),
         completion: (
