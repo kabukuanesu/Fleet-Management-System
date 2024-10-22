@@ -44,6 +44,7 @@ import Notifications from "layouts/notifications";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
+import Vehicles from "layouts/vehicles";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -59,7 +60,15 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Tables",
+    name: "Vehicles",
+    key: "vehicles",
+    icon: <Icon fontSize="small">local_shipping</Icon>,
+    route: "/vehicles",
+    component: <Vehicles />,
+  },
+  {
+    type: "collapse",
+    name: "Drivers",
     key: "tables",
     icon: <Icon fontSize="small">table_view</Icon>,
     route: "/tables",
@@ -67,7 +76,7 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Billing",
+    name: "Bookings",
     key: "billing",
     icon: <Icon fontSize="small">receipt_long</Icon>,
     route: "/billing",
@@ -75,7 +84,15 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "RTL",
+    name: "Customers",
+    key: "billing",
+    icon: <Icon fontSize="small">receipt_long</Icon>,
+    route: "/billing",
+    component: <Billing />,
+  },
+  {
+    type: "collapse",
+    name: "Fuel",
     key: "rtl",
     icon: <Icon fontSize="small">format_textdirection_r_to_l</Icon>,
     route: "/rtl",
@@ -83,7 +100,7 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Notifications",
+    name: "Tracking",
     key: "notifications",
     icon: <Icon fontSize="small">notifications</Icon>,
     route: "/notifications",
@@ -91,7 +108,7 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Profile",
+    name: "Geofence",
     key: "profile",
     icon: <Icon fontSize="small">person</Icon>,
     route: "/profile",
@@ -99,7 +116,7 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Sign In",
+    name: "Reports",
     key: "sign-in",
     icon: <Icon fontSize="small">login</Icon>,
     route: "/authentication/sign-in",
@@ -107,7 +124,7 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Sign Up",
+    name: "Log Out",
     key: "sign-up",
     icon: <Icon fontSize="small">assignment</Icon>,
     route: "/authentication/sign-up",

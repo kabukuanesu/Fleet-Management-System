@@ -67,7 +67,7 @@ export default function data() {
         project: <Project image={LogoAsana} name="John" />,
         budget: (
           <MDTypography component="a" href="#" variant="button" color="text" fontWeight="medium">
-            $2,500
+            MB300 V
           </MDTypography>
         ),
         status: (
@@ -86,7 +86,7 @@ export default function data() {
         project: <Project image={logoGithub} name="Laurent" />,
         budget: (
           <MDTypography component="a" href="#" variant="button" color="text" fontWeight="medium">
-            $5,000
+            MV78 Mini
           </MDTypography>
         ),
         status: (
@@ -105,7 +105,7 @@ export default function data() {
         project: <Project image={logoAtlassian} name="Michael" />,
         budget: (
           <MDTypography component="a" href="#" variant="button" color="text" fontWeight="medium">
-            $3,400
+            MV80
           </MDTypography>
         ),
         status: (
@@ -124,7 +124,7 @@ export default function data() {
         project: <Project image={logoSpotify} name="John" />,
         budget: (
           <MDTypography component="a" href="#" variant="button" color="text" fontWeight="medium">
-            $14,000
+            MB456
           </MDTypography>
         ),
         status: (
@@ -143,7 +143,7 @@ export default function data() {
         project: <Project image={logoSlack} name="Laurent" />,
         budget: (
           <MDTypography component="a" href="#" variant="button" color="text" fontWeight="medium">
-            $1,000
+            ST800S
           </MDTypography>
         ),
         status: (
@@ -162,7 +162,7 @@ export default function data() {
         project: <Project image={logoInvesion} name="Michael" />,
         budget: (
           <MDTypography component="a" href="#" variant="button" color="text" fontWeight="medium">
-            $2,300
+            ST600S
           </MDTypography>
         ),
         status: (
