@@ -2,7 +2,6 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import Paper from "@mui/material/Paper";
-import MyButton from "components/MYButton";
 
 const columns = [
   { field: "vehicleRegistrationNumber", headerName: "Reg No.", width: 130 },
@@ -45,7 +44,6 @@ export default function Overview() {
           sx={{ border: 0 }}
         />
       </Paper>
-      <MyButton />
     </>
   );
 }

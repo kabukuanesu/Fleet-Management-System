@@ -39,13 +39,6 @@ export default function Vehicles() {
               </MDBox>
             </Card>
           </Grid>
-          {/* <Grid item xs={3}>
-            <Card>
-              <MDBox>
-                <MDTypography>Buttons here</MDTypography>
-              </MDBox>
-            </Card>
-          </Grid> */}
           <Grid item xs={12}>
             <Card>
               <MDBox

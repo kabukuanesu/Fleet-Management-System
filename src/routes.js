@@ -48,6 +48,7 @@ import Vehicles from "layouts/vehicles";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
+import AddVehicle from "layouts/add-vehicle";
 
 const routes = [
   {
@@ -65,6 +66,14 @@ const routes = [
     icon: <Icon fontSize="small">local_shipping</Icon>,
     route: "/vehicles",
     component: <Vehicles />,
+  },
+  {
+    type: "collapse",
+    name: "Add Vehicle",
+    key: "add-vehicle",
+    icon: <Icon fontSize="small">add</Icon>,
+    route: "/add-vehicle",
+    component: <AddVehicle />,
   },
   {
     type: "collapse",

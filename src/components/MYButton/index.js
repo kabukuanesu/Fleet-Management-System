@@ -1,5 +1,6 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 
 import MDBox from "components/MDBox";
 import Grid from "@mui/material/Grid";
@@ -10,6 +11,13 @@ import AddIcon from "@mui/icons-material/Add";
 import Stack from "@mui/material/Stack";
 
 export default function MyButton() {
+  const navigate = useNavigate(); // Using useNavigate instead of useHistory
+
+  const handleAddClick = () => {
+    // Redirect to the MyForm component when the 'Add' button is clicked
+    navigate("/add-vehicle");
+  };
+
   return (
     <MDBox pt={1} pb={1}>
       <Grid container spacing={6}>
@@ -27,11 +35,11 @@ export default function MyButton() {
             >
               <MDTypography variant="h6" color="white">
                 <Stack direction="row" spacing={2}>
-                  <Button variant="outlined" startIcon={<AddIcon />}>
+                  <Button variant="outlined" startIcon={<AddIcon />} onClick={handleAddClick}>
                     Add
                   </Button>
                   <Button variant="outlined" endIcon={<BuildIcon />}>
-                    Maintanance
+                    Maintenance
                   </Button>
                 </Stack>
               </MDTypography>
