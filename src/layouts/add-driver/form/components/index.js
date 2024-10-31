@@ -6,21 +6,20 @@ import Snackbar from "@mui/material/Snackbar";
 
 export default function TextFields() {
   const [formData, setFormData] = React.useState({
-    vehicleRegistrationNumber: "",
-    vehicleName: "",
-    vehicleModel: "",
-    vehicleChassisNumber: "",
-    vehicleEngineNumber: "",
-    vehicleManufacturedBy: "",
-    vehicleType: "",
-    vehicleFuelType: "",
-    vehicleColor: "",
-    vehicleMilagePerLitre: "",
-    vehicleIsActive: "",
-    vehicleRegistrationExpiryDate: "",
-    vehicleCreatedBy: "",
-    vehicleCreatedDate: "",
-    vehicleModifiedDate: "",
+    driverName: "",
+    driverCompanyId: "",
+    driverMobileNumber: "",
+    driverAddress: "",
+    driverAge: "",
+    driverLicenseNumber: "",
+    driverLicenseExpiryDate: "",
+    driverTotalExperience: "",
+    driverDateOfJoining: "",
+    driverIsActive: "",
+    driverCreatedBy: "",
+    driverCreatedDate: "",
+    driverModifiedDate: "",
+    driverDocument: "",
   });
 
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
@@ -33,8 +32,8 @@ export default function TextFields() {
     });
   };
 
-  const handleAddVehicle = () => {
-    fetch("http://localhost:5013/api/Vehicle", {
+  const handleAddDriver = () => {
+    fetch("http://localhost:5013/api/Driver", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -89,8 +88,8 @@ export default function TextFields() {
           onChange={handleInputChange}
         />
       ))}
-      <Button variant="contained" disableElevation onClick={handleAddVehicle}>
-        Add Vehicle
+      <Button variant="contained" disableElevation onClick={handleAddDriver}>
+        Add Driver
       </Button>
       <Snackbar
         open={openSnackbar}

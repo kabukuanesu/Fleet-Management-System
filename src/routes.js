@@ -37,7 +37,6 @@ Coded by www.creative-tim.com
 
 // Material Dashboard 2 React layouts
 import Dashboard from "layouts/dashboard";
-import Tables from "layouts/tables";
 import Billing from "layouts/billing";
 import RTL from "layouts/rtl";
 import Notifications from "layouts/notifications";
@@ -49,6 +48,8 @@ import Vehicles from "layouts/vehicles";
 // @mui icons
 import Icon from "@mui/material/Icon";
 import AddVehicle from "layouts/add-vehicle";
+import Drivers from "layouts/drivers";
+import AddDriver from "layouts/add-driver";
 
 const routes = [
   {
@@ -78,10 +79,18 @@ const routes = [
   {
     type: "collapse",
     name: "Drivers",
-    key: "tables",
-    icon: <Icon fontSize="small">table_view</Icon>,
-    route: "/tables",
-    component: <Tables />,
+    key: "drivers",
+    icon: <Icon fontSize="small">groups</Icon>,
+    route: "/drivers",
+    component: <Drivers />,
+  },
+  {
+    type: "collapse",
+    name: "Add Driver",
+    key: "add-driver",
+    icon: <Icon fontSize="small">person_add_alt_1</Icon>,
+    route: "/add-driver",
+    component: <AddDriver />,
   },
   {
     type: "collapse",
