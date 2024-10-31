@@ -37,7 +37,6 @@ Coded by www.creative-tim.com
 
 // Material Dashboard 2 React layouts
 import Dashboard from "layouts/dashboard";
-import Billing from "layouts/billing";
 import RTL from "layouts/rtl";
 import Notifications from "layouts/notifications";
 import Profile from "layouts/profile";
@@ -50,6 +49,8 @@ import Icon from "@mui/material/Icon";
 import AddVehicle from "layouts/add-vehicle";
 import Drivers from "layouts/drivers";
 import AddDriver from "layouts/add-driver";
+import Customer from "layouts/customers";
+import Trips from "layouts/trips";
 
 const routes = [
   {
@@ -94,19 +95,19 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Bookings",
-    key: "billing",
-    icon: <Icon fontSize="small">receipt_long</Icon>,
-    route: "/billing",
-    component: <Billing />,
+    name: "Customers",
+    key: "customers",
+    icon: <Icon fontSize="small">people_outline</Icon>,
+    route: "/customers",
+    component: <Customer />,
   },
   {
     type: "collapse",
-    name: "Customers",
-    key: "billing",
-    icon: <Icon fontSize="small">receipt_long</Icon>,
-    route: "/billing",
-    component: <Billing />,
+    name: "Trips",
+    key: "trips",
+    icon: <Icon fontSize="small">trip_origin</Icon>,
+    route: "/trips",
+    component: <Trips />,
   },
   {
     type: "collapse",
