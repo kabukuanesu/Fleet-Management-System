@@ -37,7 +37,6 @@ Coded by www.creative-tim.com
 
 // Material Dashboard 2 React layouts
 import Dashboard from "layouts/dashboard";
-import RTL from "layouts/rtl";
 import Notifications from "layouts/notifications";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
@@ -51,6 +50,8 @@ import Drivers from "layouts/drivers";
 import AddDriver from "layouts/add-driver";
 import Customer from "layouts/customers";
 import Trips from "layouts/trips";
+import AddTrip from "layouts/add-trip";
+import Fuel from "layouts/fuel";
 
 const routes = [
   {
@@ -111,11 +112,19 @@ const routes = [
   },
   {
     type: "collapse",
+    name: "Add Trip",
+    key: "add-trip",
+    icon: <Icon fontSize="small">add_road</Icon>,
+    route: "/add-trip",
+    component: <AddTrip />,
+  },
+  {
+    type: "collapse",
     name: "Fuel",
-    key: "rtl",
-    icon: <Icon fontSize="small">format_textdirection_r_to_l</Icon>,
-    route: "/rtl",
-    component: <RTL />,
+    key: "fuel",
+    icon: <Icon fontSize="small">ev_station</Icon>,
+    route: "/fuel",
+    component: <Fuel />,
   },
   {
     type: "collapse",

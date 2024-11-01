@@ -6,20 +6,20 @@ import Snackbar from "@mui/material/Snackbar";
 
 export default function TextFields() {
   const [formData, setFormData] = React.useState({
-    driverName: "",
-    driverCompanyId: "",
-    driverMobileNumber: "",
-    driverAddress: "",
-    driverAge: "",
-    driverLicenseNumber: "",
-    driverLicenseExpiryDate: "",
-    driverTotalExperience: "",
-    driverDateOfJoining: "",
-    driverIsActive: "",
-    driverCreatedBy: "",
-    driverCreatedDate: "",
-    driverModifiedDate: "",
-    driverDocument: "",
+    tripCustomerId: "",
+    tripType: "",
+    tripDriver: "",
+    tripStartDate: "",
+    tripEndDate: "",
+    tripFromLocation: "",
+    tripToLocation: "",
+    tripTotalDistance: "",
+    tripAmount: "",
+    tripStatus: "",
+    tripTrackingCode: "",
+    tripCreatedBy: "",
+    tripCreatedDate: "",
+    tripModifiedDate: "",
   });
 
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
@@ -32,8 +32,8 @@ export default function TextFields() {
     });
   };
 
-  const handleAddDriver = () => {
-    fetch("http://localhost:5013/api/Driver", {
+  const handleAddVehicle = () => {
+    fetch("http://localhost:5013/api/Trip", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,20 +46,20 @@ export default function TextFields() {
         console.log("Data posted successfully!");
         setOpenSnackbar(true);
         setFormData({
-          driverName: "",
-          driverCompanyId: "",
-          driverMobileNumber: "",
-          driverAddress: "",
-          driverAge: "",
-          driverLicenseNumber: "",
-          driverLicenseExpiryDate: "",
-          driverTotalExperience: "",
-          driverDateOfJoining: "",
-          driverIsActive: "",
-          driverCreatedBy: "",
-          driverCreatedDate: "",
-          driverModifiedDate: "",
-          driverDocument: "",
+          tripCustomerId: "",
+          tripType: "",
+          tripDriver: "",
+          tripStartDate: "",
+          tripEndDate: "",
+          tripFromLocation: "",
+          tripToLocation: "",
+          tripTotalDistance: "",
+          tripAmount: "",
+          tripStatus: "",
+          tripTrackingCode: "",
+          tripCreatedBy: "",
+          tripCreatedDate: "",
+          tripModifiedDate: "",
         });
       })
       .catch((error) => {
@@ -87,8 +87,8 @@ export default function TextFields() {
           onChange={handleInputChange}
         />
       ))}
-      <Button variant="contained" disableElevation onClick={handleAddDriver}>
-        Add Driver
+      <Button variant="contained" disableElevation onClick={handleAddVehicle}>
+        Add Trip
       </Button>
       <Snackbar
         open={openSnackbar}

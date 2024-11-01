@@ -4,7 +4,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import Paper from "@mui/material/Paper";
 
 const columns = [
-  { field: "driverName", headerName: "Name", width: 130 },
+  { field: "driverName", headerName: "Name", width: 160 },
   { field: "driverCompanyId", headerName: "ID", width: 130 },
   { field: "driverMobileNumber", headerName: "Mobile Number", width: 130 },
   { field: "driverAge", headerName: "Age", width: 130 },
