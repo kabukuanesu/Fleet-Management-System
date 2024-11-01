@@ -52,6 +52,7 @@ import Customer from "layouts/customers";
 import Trips from "layouts/trips";
 import AddTrip from "layouts/add-trip";
 import Fuel from "layouts/fuel";
+import Tracking from "layouts/tracking";
 
 const routes = [
   {
@@ -129,6 +130,14 @@ const routes = [
   {
     type: "collapse",
     name: "Tracking",
+    key: "tracking",
+    icon: <Icon fontSize="small">gps_fixed</Icon>,
+    route: "/tracking",
+    component: <Tracking />,
+  },
+  {
+    type: "collapse",
+    name: "Notifications",
     key: "notifications",
     icon: <Icon fontSize="small">notifications</Icon>,
     route: "/notifications",
@@ -136,7 +145,7 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Geofence",
+    name: "Profile",
     key: "profile",
     icon: <Icon fontSize="small">person</Icon>,
     route: "/profile",
