@@ -7,10 +7,10 @@ import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
 
 // Table showing Fuel Assigned
-import Overview from "layouts/drivers/components/DriversOverview";
+import Overview from "layouts/fuel/components/FuelUsage";
 
 // Tab to assign fuel
-import DataTable from "layouts/drivers/components/DriversDeployed";
+import DataTable from "./components/FuelAssignment/form";
 
 export default function Fuel() {
   return (
