@@ -34,9 +34,53 @@ import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
 // Dashboard components
 import Projects from "layouts/dashboard/components/Projects";
 import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
+import * as React from "react";
+
+// Import the useState and useEffect hooks from react
+import { useEffect } from "react";
 
 function Dashboard() {
   const { sales, tasks } = reportsLineChartData;
+  const [vehicleCount, setVehicleCount] = React.useState(0);
+  const [tripCount, setTripCount] = React.useState(0);
+  const [totalFuelQuantity, setTotalFuelQuantity] = React.useState(0);
+
+  // Fetch data for fuel assignments and calculate the total fuel quantity
+  useEffect(() => {
+    fetch("http://localhost:5013/api/Fuel")
+      .then((response) => response.json())
+      .then((data) => {
+        // Extracting and converting vehicleFuelQuantity values to numbers for each row
+        const fuelQuantities = data.map((fuel) => parseFloat(fuel.vehicleFuelQuantity) || 0);
+
+        // Calculating the total fuel quantity assigned
+        const totalQuantity = fuelQuantities.reduce((acc, quantity) => acc + quantity, 0);
+
+        setTotalFuelQuantity(totalQuantity);
+      })
+      .catch((error) => console.error("Error fetching fuel data:", error));
+  }, []);
+
+  // Fetch data for trips with status "In Progress" and update the trip count
+  useEffect(() => {
+    fetch("http://localhost:5013/api/Trip")
+      .then((response) => response.json())
+      .then((data) => {
+        const inProgressTrips = data.filter((trip) => trip.tripStatus === "In Progress");
+        setTripCount(inProgressTrips.length);
+      })
+      .catch((error) => console.error("Error fetching trip data:", error));
+  }, []);
+
+  React.useEffect(() => {
+    fetch("http://localhost:5013/api/Vehicle")
+      .then((response) => response.json())
+      .then((data) => {
+        const onDutyVehicles = data.filter((vehicle) => vehicle.vehicleIsActive === "On Duty");
+        setVehicleCount(onDutyVehicles.length);
+      })
+      .catch((error) => console.error("Error fetching vehicle data:", error));
+  }, []);
 
   return (
     <DashboardLayout>
@@ -49,7 +93,7 @@ function Dashboard() {
                 color="dark"
                 icon="weekend"
                 title="Active Vehicles"
-                count={281}
+                count={vehicleCount}
                 percentage={{
                   color: "success",
                   amount: "+55%",
@@ -63,7 +107,7 @@ function Dashboard() {
               <ComplexStatisticsCard
                 icon="leaderboard"
                 title="Active Trips"
-                count="2,300"
+                count={tripCount}
                 percentage={{
                   color: "success",
                   amount: "+3%",
@@ -78,7 +122,7 @@ function Dashboard() {
                 color="success"
                 icon="store"
                 title="Fuel Assigned"
-                count="3,487l"
+                count={totalFuelQuantity + " litres"}
                 percentage={{
                   color: "success",
                   amount: "+1%",

@@ -16,7 +16,6 @@ export default function TextFields() {
     vehicleFuelFillDate: "",
     vehicleFuelAddedBy: "",
     vehicleFuelComments: "",
-    vehicleFuelCreatedDate: "",
   });
 
   const [infoSB, setInfoSB] = useState(false);
@@ -64,7 +63,6 @@ export default function TextFields() {
           vehicleFuelFillDate: "",
           vehicleFuelAddedBy: "",
           vehicleFuelComments: "",
-          vehicleFuelCreatedDate: "",
         });
       })
       .catch((error) => {
