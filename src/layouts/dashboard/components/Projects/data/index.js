@@ -1,210 +1,105 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/function-component-definition */
-/**
-=========================================================
-* Material Dashboard 2 React - v2.2.0
-=========================================================
+import * as React from "react";
+import { useState, useEffect } from "react";
+import { DataGrid } from "@mui/x-data-grid";
+import Paper from "@mui/material/Paper";
 
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
+const columns = [
+  { field: "FieldOne", headerName: "FieldOne", width: 180 },
+  { field: "ValueOne", headerName: "ValueOne", width: 150 },
+  { field: "FieldTwo", headerName: "FieldTwo", width: 150 },
+  { field: "ValueTwo", headerName: "ValueTwo", width: 150 },
+];
 
-Coded by www.creative-tim.com
+export default function Summary() {
+  const [rows, setRows] = useState([]);
 
- =========================================================
+  useEffect(() => {
+    Promise.all([
+      fetch("http://localhost:5013/api/Vehicle"),
+      fetch("http://localhost:5013/api/Trip"),
+      fetch("http://localhost:5013/api/Driver"),
+    ])
+      .then((responses) => Promise.all(responses.map((response) => response.json())))
+      .then((data) => {
+        const vehicleOffDutyCount = data[0].filter(
+          (vehicle) => vehicle.vehicleIsActive === "Off Duty"
+        ).length;
+        const vehicleOnDutyCount = data[0].filter(
+          (vehicle) => vehicle.vehicleIsActive === "On Duty"
+        ).length;
 
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
+        const inProgressTripsCount = data[1].filter(
+          (trip) => trip.tripStatus === "In Progress"
+        ).length;
+        const scheduledTripsCount = data[1].filter(
+          (trip) => trip.tripStatus === "Scheduled"
+        ).length;
 
-// @mui material components
-import Tooltip from "@mui/material/Tooltip";
-import MDBox from "components/MDBox";
-import MDTypography from "components/MDTypography";
-import MDAvatar from "components/MDAvatar";
-import MDProgress from "components/MDProgress";
+        const driversOffDutyCount = data[2].filter(
+          (driver) => driver.driverIsActive === "Off Duty"
+        ).length;
+        const driversOnDutyCount = data[2].filter(
+          (driver) => driver.driverIsActive === "On Duty"
+        ).length;
+        const unavailableDriversCount = data[2].filter(
+          (driver) => driver.driverIsActive === "Unavailable"
+        ).length;
+        const scheduledDriversCount = data[2].filter(
+          (driver) => driver.driverIsActive === "Scheduled"
+        ).length;
 
-// Images
-import logoXD from "assets/images/small-logos/logo-xd.svg";
-import logoAtlassian from "assets/images/small-logos/logo-atlassian.svg";
-import logoSlack from "assets/images/small-logos/logo-slack.svg";
-import logoSpotify from "assets/images/small-logos/logo-spotify.svg";
-import logoJira from "assets/images/small-logos/logo-jira.svg";
-import logoInvesion from "assets/images/small-logos/logo-invision.svg";
-import team1 from "assets/images/team-1.jpg";
-import team2 from "assets/images/team-2.jpg";
-import team3 from "assets/images/team-3.jpg";
-import team4 from "assets/images/team-4.jpg";
+        const updatedRows = [
+          {
+            id: 1,
+            FieldOne: "Vehicles On Standby",
+            ValueOne: vehicleOffDutyCount || 0,
+            FieldTwo: "Vehicles On Duty",
+            ValueTwo: vehicleOnDutyCount || 0,
+          },
+          {
+            id: 2,
+            FieldOne: "Active Trips",
+            ValueOne: inProgressTripsCount || 0,
+            FieldTwo: "Scheduled Trips",
+            ValueTwo: scheduledTripsCount || 0,
+          },
+          {
+            id: 3,
+            FieldOne: "Drivers On Standby",
+            ValueOne: driversOffDutyCount || 0,
+            FieldTwo: "Drivers On Duty",
+            ValueTwo: driversOnDutyCount || 0,
+          },
+          {
+            id: 4,
+            FieldOne: "Unavailable Drivers",
+            ValueOne: unavailableDriversCount || 0,
+            FieldTwo: "Scheduled Drivers",
+            ValueTwo: scheduledDriversCount || 0,
+          },
+        ];
 
-export default function data() {
-  const avatars = (members) =>
-    members.map(([image, name]) => (
-      <Tooltip key={name} title={name} placeholder="bottom">
-        <MDAvatar
-          src={image}
-          alt="name"
-          size="xs"
-          sx={{
-            border: ({ borders: { borderWidth }, palette: { white } }) =>
-              `${borderWidth[2]} solid ${white.main}`,
-            cursor: "pointer",
-            position: "relative",
+        setRows(updatedRows);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
 
-            "&:not(:first-of-type)": {
-              ml: -1.25,
-            },
-
-            "&:hover, &:focus": {
-              zIndex: "10",
-            },
-          }}
+  return (
+    <>
+      <Paper sx={{ height: 400, width: "100%" }}>
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          disableColumnMenu
+          disableColumnSelector
+          disableSelectionOnClick
+          disableColumnReorder
+          pageSize={4}
+          sx={{ border: 0 }}
         />
-      </Tooltip>
-    ));
-
-  const Company = ({ image, name }) => (
-    <MDBox display="flex" alignItems="center" lineHeight={1}>
-      <MDAvatar src={image} name={name} size="sm" />
-      <MDTypography variant="button" fontWeight="medium" ml={1} lineHeight={1}>
-        {name}
-      </MDTypography>
-    </MDBox>
+      </Paper>
+    </>
   );
-
-  return {
-    columns: [
-      { Header: "report objects", accessor: "companies", width: "45%", align: "left" },
-      { Header: "people involved", accessor: "members", width: "10%", align: "left" },
-      { Header: "total", accessor: "budget", align: "center" },
-      { Header: "status", accessor: "completion", align: "center" },
-    ],
-
-    rows: [
-      {
-        companies: <Company image={logoXD} name="Active Drivers" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([
-              [team1, "Ryan Tompson"],
-              [team2, "Romina Hadid"],
-              [team3, "Alexander Smith"],
-              [team4, "Jessica Doe"],
-            ])}
-          </MDBox>
-        ),
-        budget: (
-          <MDTypography variant="caption" color="text" fontWeight="medium">
-            14,000
-          </MDTypography>
-        ),
-        completion: (
-          <MDBox width="8rem" textAlign="left">
-            <MDProgress value={60} color="info" variant="gradient" label={false} />
-          </MDBox>
-        ),
-      },
-      {
-        companies: <Company image={logoAtlassian} name="Incidents" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([
-              [team2, "Romina Hadid"],
-              [team4, "Jessica Doe"],
-            ])}
-          </MDBox>
-        ),
-        budget: (
-          <MDTypography variant="caption" color="text" fontWeight="medium">
-            300
-          </MDTypography>
-        ),
-        completion: (
-          <MDBox width="8rem" textAlign="left">
-            <MDProgress value={10} color="info" variant="gradient" label={false} />
-          </MDBox>
-        ),
-      },
-      {
-        companies: <Company image={logoSlack} name="Delayed Trips" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([
-              [team1, "Ryan Tompson"],
-              [team3, "Alexander Smith"],
-            ])}
-          </MDBox>
-        ),
-        budget: (
-          <MDTypography variant="caption" color="text" fontWeight="medium">
-            20
-          </MDTypography>
-        ),
-        completion: (
-          <MDBox width="8rem" textAlign="left">
-            <MDProgress value={100} color="success" variant="gradient" label={false} />
-          </MDBox>
-        ),
-      },
-      {
-        companies: <Company image={logoSpotify} name="Vehicles In Maintenance" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([
-              [team4, "Jessica Doe"],
-              [team3, "Alexander Smith"],
-              [team2, "Romina Hadid"],
-              [team1, "Ryan Tompson"],
-            ])}
-          </MDBox>
-        ),
-        budget: (
-          <MDTypography variant="caption" color="text" fontWeight="medium">
-            500
-          </MDTypography>
-        ),
-        completion: (
-          <MDBox width="8rem" textAlign="left">
-            <MDProgress value={100} color="success" variant="gradient" label={false} />
-          </MDBox>
-        ),
-      },
-      {
-        companies: <Company image={logoJira} name="New Vehicles" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([[team4, "Jessica Doe"]])}
-          </MDBox>
-        ),
-        budget: (
-          <MDTypography variant="caption" color="text" fontWeight="medium">
-            500
-          </MDTypography>
-        ),
-        completion: (
-          <MDBox width="8rem" textAlign="left">
-            <MDProgress value={25} color="info" variant="gradient" label={false} />
-          </MDBox>
-        ),
-      },
-      {
-        companies: <Company image={logoInvesion} name="Disposed Vehicles" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([
-              [team1, "Ryan Tompson"],
-              [team4, "Jessica Doe"],
-            ])}
-          </MDBox>
-        ),
-        budget: (
-          <MDTypography variant="caption" color="text" fontWeight="medium">
-            200
-          </MDTypography>
-        ),
-        completion: (
-          <MDBox width="8rem" textAlign="left">
-            <MDProgress value={40} color="info" variant="gradient" label={false} />
-          </MDBox>
-        ),
-      },
-    ],
-  };
 }
