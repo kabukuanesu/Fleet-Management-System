@@ -97,8 +97,8 @@ function Dashboard() {
                 count={vehicleCount}
                 percentage={{
                   color: "success",
-                  amount: "+55%",
-                  label: "than lask week",
+                  amount: "Deployed",
+                  label: "Vehicles",
                 }}
               />
             </MDBox>
@@ -111,8 +111,8 @@ function Dashboard() {
                 count={tripCount}
                 percentage={{
                   color: "success",
-                  amount: "+3%",
-                  label: "than last month",
+                  amount: "Active",
+                  label: "Jobs",
                 }}
               />
             </MDBox>
@@ -126,8 +126,8 @@ function Dashboard() {
                 count={totalFuelQuantity + " litres"}
                 percentage={{
                   color: "success",
-                  amount: "+1%",
-                  label: "than yesterday",
+                  amount: "Fuel",
+                  label: "In Use",
                 }}
               />
             </MDBox>
@@ -141,8 +141,8 @@ function Dashboard() {
                 count="+91"
                 percentage={{
                   color: "success",
-                  amount: "",
-                  label: "Just updated",
+                  amount: "Still",
+                  label: "Waiting...",
                 }}
               />
             </MDBox>

@@ -1,30 +1,50 @@
-/**
-=========================================================
-* Material Dashboard 2 React - v2.2.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// @mui material components
+import React, { useState, useEffect } from "react";
 import Card from "@mui/material/Card";
-import Icon from "@mui/material/Icon";
-
-// Material Dashboard 2 React components
-import MDBox from "components/MDBox";
-import MDTypography from "components/MDTypography";
-
-// Material Dashboard 2 React example components
 import TimelineItem from "examples/Timeline/TimelineItem";
+import MDTypography from "components/MDTypography";
+import Icon from "@mui/material/Icon";
+import MDBox from "components/MDBox";
+
+// Mock API function to fetch scheduled trips (replace with actual API call)
+const fetchScheduledTrips = async () => {
+  try {
+    const response = await fetch("http://localhost:5013/api/Trip");
+    if (!response.ok) {
+      throw new Error("Failed to fetch data");
+    }
+    const data = await response.json();
+
+    // Filter trips with tripStatus 'Scheduled'
+    const scheduledTrips = data.filter((trip) => trip.tripStatus === "Scheduled");
+
+    return scheduledTrips;
+  } catch (error) {
+    console.error("Error fetching scheduled trips:", error);
+    return [];
+  }
+};
 
 function OrdersOverview() {
+  const [scheduledTrips, setScheduledTrips] = useState([]);
+
+  useEffect(() => {
+    fetchScheduledTrips()
+      .then((data) => {
+        // Sort the scheduled trips based on tripStartDate
+        const sortedTrips = data.sort(
+          (a, b) => new Date(a.tripStartDate) - new Date(b.tripStartDate)
+        );
+
+        // Display only the first 5 scheduled trips
+        const displayedTrips = sortedTrips.slice(0, 5);
+
+        setScheduledTrips(displayedTrips);
+      })
+      .catch((error) => {
+        console.error("Error fetching scheduled trips:", error);
+      });
+  }, []);
+
   return (
     <Card sx={{ height: "100%" }}>
       <MDBox pt={3} px={3}>
@@ -34,48 +54,29 @@ function OrdersOverview() {
         <MDBox mt={0} mb={2}>
           <MDTypography variant="button" color="text" fontWeight="regular">
             <MDTypography display="inline" variant="body2" verticalAlign="middle">
-              <Icon sx={{ color: ({ palette: { success } }) => success.main }}>arrow_upward</Icon>
+              <Icon sx={{ color: ({ palette: { success } }) => success.main }}>
+                pending_actions
+              </Icon>
             </MDTypography>
             &nbsp;
             <MDTypography variant="button" color="text" fontWeight="medium">
-              24%
+              Pending
             </MDTypography>{" "}
-            this month
+            Trips
           </MDTypography>
         </MDBox>
       </MDBox>
       <MDBox p={2}>
-        <TimelineItem
-          color="success"
-          icon="notifications"
-          title="Trip ID #3456972"
-          dateTime="22 DEC 7:20 PM"
-        />
-        <TimelineItem
-          color="error"
-          icon="inventory_2"
-          title="Trip ID #1832412"
-          dateTime="21 DEC 11 PM"
-        />
-        <TimelineItem
-          color="info"
-          icon="shopping_cart"
-          title="Trip ID #1830984"
-          dateTime="21 DEC 9:34 PM"
-        />
-        <TimelineItem
-          color="warning"
-          icon="payment"
-          title="Trip ID #4395133"
-          dateTime="20 DEC 2:20 AM"
-        />
-        <TimelineItem
-          color="primary"
-          icon="vpn_key"
-          title="Trip ID #4395133"
-          dateTime="18 DEC 4:54 AM"
-          lastItem
-        />
+        {scheduledTrips.map((trip, index) => (
+          <TimelineItem
+            key={index}
+            color="success"
+            icon="notifications"
+            title={`Trip ID #${trip.tripCustomerId}`}
+            dateTime={trip.tripStartDate}
+            lastItem={index === 4} // Mark the last item
+          />
+        ))}
       </MDBox>
     </Card>
   );
