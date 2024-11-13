@@ -7,15 +7,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 
-function formatDate(dateString) {
-  const date = new Date(dateString);
-  return date.toISOString().split("T")[0];
-}
-
 function PopVehicle({ vehicleData }) {
-  const formattedCreatedDate = formatDate(vehicleData.vehicleCreatedDate);
-  const formattedModifiedDate = formatDate(vehicleData.vehicleModifiedDate);
-
   return (
     <Grid container spacing={1}>
       <Grid item xs={12} md={6} xl={4}>
@@ -92,8 +84,8 @@ function PopVehicle({ vehicleData }) {
             status: vehicleData.vehicleIsActive,
             regExpDate: vehicleData.vehicleRegistrationExpiryDate,
             createdBy: vehicleData.vehicleCreatedBy,
-            createdDate: formattedCreatedDate,
-            lastModified: formattedModifiedDate,
+            createdDate: vehicleData.vehicleCreatedDate,
+            lastModified: vehicleData.vehicleModifiedDate,
           }}
           social={[
             {
@@ -121,4 +113,3 @@ function PopVehicle({ vehicleData }) {
 }
 
 export default PopVehicle;
-
