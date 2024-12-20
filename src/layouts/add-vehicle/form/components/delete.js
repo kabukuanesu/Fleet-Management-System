@@ -21,6 +21,8 @@ export default function TextFields() {
     vehicleIsActive: "",
     vehicleRegistrationExpiryDate: "",
     vehicleCreatedBy: "",
+    vehicleCreatedDate: "",
+    vehicleModifiedDate: "",
   });
 
   const [infoSB, setInfoSB] = useState(false);
@@ -73,6 +75,8 @@ export default function TextFields() {
           vehicleIsActive: "",
           vehicleRegistrationExpiryDate: "",
           vehicleCreatedBy: "",
+          vehicleCreatedDate: "",
+          vehicleModifiedDate: "",
         });
       })
       .catch((error) => {
@@ -91,7 +95,7 @@ export default function TextFields() {
         <TextField
           key={key}
           id={key}
-          label={key.replace(/([A-Z])/g, " $1").replace(/^./, (str) => str.toUpperCase())}
+          label={key}
           value={formData[key]}
           onChange={handleInputChange}
         />
