@@ -36,7 +36,7 @@ export default function Summary() {
         ).length;
 
         const driversOffDutyCount = data[2].filter(
-          (driver) => driver.driverIsActive === "Off Duty"
+          (driver) => driver.driverIsActive === "Standby"
         ).length;
         const driversOnDutyCount = data[2].filter(
           (driver) => driver.driverIsActive === "On Duty"

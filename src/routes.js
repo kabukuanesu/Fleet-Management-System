@@ -97,14 +97,6 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Customers",
-    key: "customers",
-    icon: <Icon fontSize="small">people_outline</Icon>,
-    route: "/customers",
-    component: <Customer />,
-  },
-  {
-    type: "collapse",
     name: "Trips",
     key: "trips",
     icon: <Icon fontSize="small">trip_origin</Icon>,
@@ -118,6 +110,14 @@ const routes = [
     icon: <Icon fontSize="small">add_road</Icon>,
     route: "/add-trip",
     component: <AddTrip />,
+  },
+  {
+    type: "collapse",
+    name: "Customers",
+    key: "customers",
+    icon: <Icon fontSize="small">people_outline</Icon>,
+    route: "/customers",
+    component: <Customer />,
   },
   {
     type: "collapse",

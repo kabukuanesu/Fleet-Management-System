@@ -12,22 +12,22 @@ function formatDate(dateString) {
   return date.toISOString().split("T")[0];
 }
 
-function PopVehicle({ vehicleData }) {
-  const formattedCreatedDate = formatDate(vehicleData.vehicleCreatedDate);
-  const formattedModifiedDate = formatDate(vehicleData.vehicleModifiedDate);
+function PopDriver({ tripData }) {
+  const formattedCreatedDate = formatDate(driverData.driverCreatedDate);
+  const formattedModifiedDate = formatDate(driverData.driverModifiedDate);
+  const formattedDateOfJoining = formatDate(driverData.driverDateOfJoining);
 
   return (
     <Grid container spacing={1}>
       <Grid item xs={12} md={6} xl={4}>
         <ProfileInfoCard
-          title="Vehicle Information"
-          description="Information about this vehicle."
+          title="Driver Information"
+          description="Information about the Driver."
           info={{
-            regNumber: vehicleData.vehicleRegistrationNumber,
-            name: vehicleData.vehicleName,
-            model: vehicleData.vehicleModel,
-            chassisNo: vehicleData.vehicleChassisNumber,
-            engineNo: vehicleData.vehicleEngineNumber,
+            name: driverData.driverName,
+            companyId: driverData.driverCompanyId,
+            mobile: driverData.driverMobileNumber,
+            address: driverData.driverAddress,
           }}
           social={[
             {
@@ -46,21 +46,20 @@ function PopVehicle({ vehicleData }) {
               color: "instagram",
             },
           ]}
-          action={{ route: "/add-vehicle", tooltip: "Edit Info" }}
+          action={{ route: "/add-driver", tooltip: "Edit Info" }}
           shadow={false}
         />
       </Grid>
       <Grid item xs={12} md={6} xl={4} sx={{ display: "flex" }}>
         <Divider orientation="vertical" sx={{ ml: -2, mr: 1 }} />
         <ProfileInfoCard
-          title="Vehicle Details"
-          description="Details about this vehicle"
+          title="Driver Details"
+          description="Details about the Driver"
           info={{
-            manufacturer: vehicleData.vehicleManufacturedBy,
-            type: vehicleData.vehicleType,
-            fuelType: vehicleData.vehicleFuelType,
-            color: vehicleData.vehicleColor,
-            fuelConsumption: vehicleData.vehicleMilagePerLitre,
+            licenseNumber: driverData.driverLicenseNumber,
+            licenseExpiryDate: driverData.driverLicenseExpiryDate,
+            experience: driverData.driverTotalExperience,
+            joined: formattedDateOfJoining,
           }}
           social={[
             {
@@ -79,19 +78,19 @@ function PopVehicle({ vehicleData }) {
               color: "instagram",
             },
           ]}
-          action={{ route: "/add-vehicle", tooltip: "Edit Details" }}
+          action={{ route: "/add-driver", tooltip: "Edit Details" }}
           shadow={false}
         />
         <Divider orientation="vertical" sx={{ mx: 0 }} />
       </Grid>
       <Grid item xs={12} xl={4}>
         <ProfileInfoCard
-          title="Vehicle Data"
-          description="Data about this vehicle"
+          title="Driver Data"
+          description="Data about the Driver"
           info={{
-            status: vehicleData.vehicleIsActive,
-            regExpDate: vehicleData.vehicleRegistrationExpiryDate,
-            createdBy: vehicleData.vehicleCreatedBy,
+            age: driverData.driverAge,
+            status: driverData.driverIsActive,
+            createdBy: driverData.driverCreatedBy,
             createdDate: formattedCreatedDate,
             lastModified: formattedModifiedDate,
           }}
@@ -112,7 +111,7 @@ function PopVehicle({ vehicleData }) {
               color: "instagram",
             },
           ]}
-          action={{ route: "add-vehicle", tooltip: "Edit Data" }}
+          action={{ route: "add-driver", tooltip: "Edit Data" }}
           shadow={false}
         />
       </Grid>
@@ -120,4 +119,4 @@ function PopVehicle({ vehicleData }) {
   );
 }
 
-export default PopVehicle;
+export default PopDriver;

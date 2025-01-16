@@ -20,7 +20,6 @@ const columns = [
   { field: "tripFromLocation", headerName: "From", width: 130 },
   { field: "tripToLocation", headerName: "To", width: 130 },
   { field: "tripTotalDistance", headerName: "Distance", width: 130 },
-  { field: "tripStatus", headerName: "Status", width: 130 },
   { field: "tripTrackingCode", headerName: "Tracking Code", width: 150 },
 ];
 
