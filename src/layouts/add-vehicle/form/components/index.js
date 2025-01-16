@@ -18,7 +18,6 @@ export default function TextFields() {
     vehicleFuelType: "",
     vehicleColor: "",
     vehicleMilagePerLitre: "",
-    vehicleIsActive: "",
     vehicleRegistrationExpiryDate: "",
     vehicleCreatedBy: "",
   });
@@ -70,7 +69,6 @@ export default function TextFields() {
           vehicleFuelType: "",
           vehicleColor: "",
           vehicleMilagePerLitre: "",
-          vehicleIsActive: "",
           vehicleRegistrationExpiryDate: "",
           vehicleCreatedBy: "",
         });

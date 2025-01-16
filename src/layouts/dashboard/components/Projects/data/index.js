@@ -4,10 +4,10 @@ import { DataGrid } from "@mui/x-data-grid";
 import Paper from "@mui/material/Paper";
 
 const columns = [
-  { field: "FieldOne", headerName: "FieldOne", width: 180 },
-  { field: "ValueOne", headerName: "ValueOne", width: 150 },
-  { field: "FieldTwo", headerName: "FieldTwo", width: 150 },
-  { field: "ValueTwo", headerName: "ValueTwo", width: 150 },
+  { field: "FieldOne", headerName: "Category", width: 180 },
+  { field: "ValueOne", headerName: "Value", width: 150 },
+  { field: "FieldTwo", headerName: "Category", width: 150 },
+  { field: "ValueTwo", headerName: "Value", width: 150 },
 ];
 
 export default function Summary() {
