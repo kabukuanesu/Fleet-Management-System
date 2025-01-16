@@ -16,11 +16,7 @@ export default function TextFields() {
     driverLicenseNumber: "",
     driverLicenseExpiryDate: "",
     driverTotalExperience: "",
-    driverDateOfJoining: "",
-    driverIsActive: "",
     driverCreatedBy: "",
-    driverCreatedDate: "",
-    driverModifiedDate: "",
     driverDocument: "",
   });
 
@@ -69,11 +65,7 @@ export default function TextFields() {
           driverLicenseNumber: "",
           driverLicenseExpiryDate: "",
           driverTotalExperience: "",
-          driverDateOfJoining: "",
-          driverIsActive: "",
           driverCreatedBy: "",
-          driverCreatedDate: "",
-          driverModifiedDate: "",
           driverDocument: "",
         });
       })
@@ -93,7 +85,7 @@ export default function TextFields() {
         <TextField
           key={key}
           id={key}
-          label={key}
+          label={key.replace(/([A-Z])/g, " $1").replace(/^./, (str) => str.toUpperCase())}
           value={formData[key]}
           onChange={handleInputChange}
         />

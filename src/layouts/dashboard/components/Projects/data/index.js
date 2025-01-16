@@ -22,7 +22,7 @@ export default function Summary() {
       .then((responses) => Promise.all(responses.map((response) => response.json())))
       .then((data) => {
         const vehicleOffDutyCount = data[0].filter(
-          (vehicle) => vehicle.vehicleIsActive === "Off Duty"
+          (vehicle) => vehicle.vehicleIsActive === "Standby"
         ).length;
         const vehicleOnDutyCount = data[0].filter(
           (vehicle) => vehicle.vehicleIsActive === "On Duty"
