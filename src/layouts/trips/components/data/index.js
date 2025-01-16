@@ -12,22 +12,21 @@ function formatDate(dateString) {
   return date.toISOString().split("T")[0];
 }
 
-function PopDriver({ tripData }) {
-  const formattedCreatedDate = formatDate(driverData.driverCreatedDate);
-  const formattedModifiedDate = formatDate(driverData.driverModifiedDate);
-  const formattedDateOfJoining = formatDate(driverData.driverDateOfJoining);
+function PopTrip({ tripData }) {
+  const formattedCreatedDate = formatDate(tripData.tripCreatedDate);
+  const formattedModifiedDate = formatDate(tripData.tripModifiedDate);
 
   return (
     <Grid container spacing={1}>
       <Grid item xs={12} md={6} xl={4}>
         <ProfileInfoCard
-          title="Driver Information"
-          description="Information about the Driver."
+          title="Trip Information"
+          description="Information about the Trip."
           info={{
-            name: driverData.driverName,
-            companyId: driverData.driverCompanyId,
-            mobile: driverData.driverMobileNumber,
-            address: driverData.driverAddress,
+            tripId: tripData.tripId,
+            customerId: tripData.tripCustomerId,
+            type: tripData.tripType,
+            tripDriver: tripData.tripDriver,
           }}
           social={[
             {
@@ -46,20 +45,21 @@ function PopDriver({ tripData }) {
               color: "instagram",
             },
           ]}
-          action={{ route: "/add-driver", tooltip: "Edit Info" }}
+          action={{ route: "/add-trip", tooltip: "Edit Info" }}
           shadow={false}
         />
       </Grid>
       <Grid item xs={12} md={6} xl={4} sx={{ display: "flex" }}>
         <Divider orientation="vertical" sx={{ ml: -2, mr: 1 }} />
         <ProfileInfoCard
-          title="Driver Details"
-          description="Details about the Driver"
+          title="Trip Details"
+          description="Details about the Trip"
           info={{
-            licenseNumber: driverData.driverLicenseNumber,
-            licenseExpiryDate: driverData.driverLicenseExpiryDate,
-            experience: driverData.driverTotalExperience,
-            joined: formattedDateOfJoining,
+            starts: tripData.tripStartDate,
+            ends: tripData.tripEndDate,
+            from: tripData.tripFromLocation,
+            to: tripData.tripToLocation,
+            distance: tripData.tripTotalDistance,
           }}
           social={[
             {
@@ -78,19 +78,19 @@ function PopDriver({ tripData }) {
               color: "instagram",
             },
           ]}
-          action={{ route: "/add-driver", tooltip: "Edit Details" }}
+          action={{ route: "/add-trip", tooltip: "Edit Details" }}
           shadow={false}
         />
         <Divider orientation="vertical" sx={{ mx: 0 }} />
       </Grid>
       <Grid item xs={12} xl={4}>
         <ProfileInfoCard
-          title="Driver Data"
-          description="Data about the Driver"
+          title="Trip Data"
+          description="Data about the Trip"
           info={{
-            age: driverData.driverAge,
-            status: driverData.driverIsActive,
-            createdBy: driverData.driverCreatedBy,
+            amount: tripData.tripAmount,
+            status: tripData.tripStatus,
+            trackingCode: tripData.tripTrackingCode,
             createdDate: formattedCreatedDate,
             lastModified: formattedModifiedDate,
           }}
@@ -111,7 +111,7 @@ function PopDriver({ tripData }) {
               color: "instagram",
             },
           ]}
-          action={{ route: "add-driver", tooltip: "Edit Data" }}
+          action={{ route: "add-trip", tooltip: "Edit Data" }}
           shadow={false}
         />
       </Grid>
@@ -119,4 +119,4 @@ function PopDriver({ tripData }) {
   );
 }
 
-export default PopDriver;
+export default PopTrip;

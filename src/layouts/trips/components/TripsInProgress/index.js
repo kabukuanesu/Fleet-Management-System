@@ -5,11 +5,9 @@ import Paper from "@mui/material/Paper";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
-import VehicleData from "layouts/trips/vehicle-data";
-
-import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
-import MDBox from "components/MDBox";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
+import PopTrip from "../data";
 
 const columns = [
   { field: "tripCustomerId", headerName: "Customer ID", width: 150 },
@@ -26,6 +24,8 @@ const columns = [
 export default function Overview() {
   const [rows, setRows] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
+  const [selectedTripId, setSelectedTripId] = useState(null);
+  const [selectedTripData, setSelectedTripData] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:5013/api/Trip")
@@ -40,8 +40,18 @@ export default function Overview() {
       });
   }, []);
 
-  const handleRowClick = () => {
+  const handleRowClick = (params) => {
+    setSelectedTripId(params.row.tripId);
     setOpenDialog(true);
+
+    fetch(`http://localhost:5013/api/Trip/${params.row.tripId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setSelectedTripData(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching selected trip data:", error);
+      });
   };
 
   const handleCloseDialog = () => {
@@ -56,26 +66,25 @@ export default function Overview() {
           columns={columns}
           pageSize={5}
           disableSelectionOnClick
-          onRowClick={(params) => handleRowClick(params.row)}
+          onRowClick={handleRowClick}
           sx={{ border: 0 }}
         />
       </Paper>
-      <MDBox pt={6} pb={3}>
-        <Grid container spacing={6}>
-          <Grid item xs={12}>
-            <Card>
-              <MDBox pt={3}>
-                <Dialog open={openDialog} onClose={handleCloseDialog} fullWidth maxWidth="md">
-                  <DialogTitle>Me showing Vehicle Details</DialogTitle>
-                  <DialogContent>
-                    <VehicleData />
-                  </DialogContent>
-                </Dialog>
-              </MDBox>
-            </Card>
-          </Grid>
-        </Grid>
-      </MDBox>
+      <Dialog open={openDialog} onClose={handleCloseDialog} fullWidth maxWidth="md">
+        <DialogTitle>
+          Trip Details
+          <IconButton
+            aria-label="close"
+            onClick={handleCloseDialog}
+            sx={{ position: "absolute", right: 8, top: 8 }}
+          >
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent>
+          {selectedTripData && <PopTrip tripData={selectedTripData} />}
+        </DialogContent>
+      </Dialog>
     </>
   );
 }

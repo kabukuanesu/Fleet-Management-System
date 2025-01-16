@@ -17,11 +17,8 @@ export default function TextFields() {
     tripToLocation: "",
     tripTotalDistance: "",
     tripAmount: "",
-    tripStatus: "",
     tripTrackingCode: "",
     tripCreatedBy: "",
-    tripCreatedDate: "",
-    tripModifiedDate: "",
   });
 
   const [infoSB, setInfoSB] = useState(false);
@@ -70,11 +67,8 @@ export default function TextFields() {
           tripToLocation: "",
           tripTotalDistance: "",
           tripAmount: "",
-          tripStatus: "",
           tripTrackingCode: "",
           tripCreatedBy: "",
-          tripCreatedDate: "",
-          tripModifiedDate: "",
         });
       })
       .catch((error) => {
