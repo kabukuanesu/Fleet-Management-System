@@ -113,19 +113,19 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Customers",
-    key: "customers",
-    icon: <Icon fontSize="small">people_outline</Icon>,
-    route: "/customers",
-    component: <Customer />,
-  },
-  {
-    type: "collapse",
     name: "Fuel",
     key: "fuel",
     icon: <Icon fontSize="small">ev_station</Icon>,
     route: "/fuel",
     component: <Fuel />,
+  },
+  {
+    type: "collapse",
+    name: "Customers",
+    key: "customers",
+    icon: <Icon fontSize="small">people_outline</Icon>,
+    route: "/customers",
+    component: <Customer />,
   },
   {
     type: "collapse",

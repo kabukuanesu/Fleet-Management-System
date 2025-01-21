@@ -9,9 +9,9 @@ import MDSnackbar from "components/MDSnackbar";
 export default function TextFields() {
   const [formData, setFormData] = React.useState({
     vehicleRegistrationId: "",
-    vehicleFuelQuantity: "",
-    vehicleFuelType: "",
     odometerReading: "",
+    vehicleFuelType: "",
+    vehicleFuelQuantity: "",
     vehicleFuelPrice: "",
     vehicleFuelFillDate: "",
     vehicleFuelAddedBy: "",
@@ -56,9 +56,9 @@ export default function TextFields() {
         setInfoSB(true);
         setFormData({
           vehicleRegistrationId: "",
-          vehicleFuelQuantity: "",
-          vehicleFuelType: "",
           odometerReading: "",
+          vehicleFuelType: "",
+          vehicleFuelQuantity: "",
           vehicleFuelPrice: "",
           vehicleFuelFillDate: "",
           vehicleFuelAddedBy: "",
@@ -81,7 +81,7 @@ export default function TextFields() {
         <TextField
           key={key}
           id={key}
-          label={key}
+          label={key.replace(/([A-Z])/g, " $1").replace(/^./, (str) => str.toUpperCase())}
           value={formData[key]}
           onChange={handleInputChange}
         />
